@@ -1,6 +1,6 @@
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const User = require('./user_moduel')
+const User = require('./user_module')
 const tokenSecret = process.env.JWT_SECRET || "is it secret, is it safe?"
 module.exports = {
     hashing,
