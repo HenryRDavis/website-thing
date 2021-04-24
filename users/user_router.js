@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const User = require('./user_module')
-const {hashing, errorHandler, makeJwt, restricted, usernameValidation} = require('./users_helper')
+const {hashing, errorHandler, makeJwt, restricted, usernameValidation} = require('./user_service.js')
 const bcryptjs = require('bcryptjs')
 
 
