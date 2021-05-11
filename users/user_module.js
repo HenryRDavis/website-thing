@@ -1,7 +1,7 @@
 const db = require('../data/connection')
 
 module.exports = {
-    find,
+    getUsers,
     findBy,
     findById,
     addUser,
@@ -9,8 +9,8 @@ module.exports = {
     update
 }
 // get all users
-function find() {
-     return db('user')
+function getUsers() {
+     return db.select('*').from('user')
 }
 
 // get a user
@@ -43,6 +43,7 @@ function remove(id) {
 
 // update a user 
 function update(updating, id) {
-    return findById(id).update(updating)
+    return findById(id)
+    .update(updating)
     .then(()=> findById(id))
 }

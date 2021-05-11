@@ -1,7 +1,9 @@
 require('dotenv').config() // to allow the deployment server to access the env comands
 
-const server = require('./api/server.js')
+const server = require('./api/server')
 
 const port = process.env.PORT || 5000
 
-server.listen(port, () => console.log("server is running"))
+server.listen(port, ()=>{
+    console.log(`server is listening on port: ${port}`)
+})

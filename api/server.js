@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
+const session = require('express-session')
 const userRouter = require('../users/user_router')
 const authRouter = require('../auth/router')
 
@@ -28,10 +29,10 @@ server.use(session(sessionConfiguration))
 
 // to test that the server is up and running
 server.get('/', (req, res) => {
-    res.send({server: 'up'});
-  });
+  res.status(200).send(`<h1> Server is Up and Running </h1>`)
+})
 
 server.use('/api/auth', authRouter);
-server.use('/api/users', userRouter);
+server.use('/api/auth/users', userRouter);
 
 module.exports = server;

@@ -1,12 +1,12 @@
-const express = require('express');
+const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 const bcryptjs = require('bcryptjs');
 const Users = require('../users/user_module');
 const {isValid} = require('../users/user_service.js');
 const config = require("../api/config.js");
-const router = express.Router();
 
-router.use("/register", (req, res) => {
+//Register
+router.post("/register", (req, res) => {
   const credentials = req.body;
 
   if (isValid(credentials)) {
@@ -30,7 +30,7 @@ router.use("/register", (req, res) => {
 });
 
 //login
-router.use("/login", (req, res) => {
+router.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   if (isValid(req.body)) {
@@ -57,8 +57,7 @@ router.use("/login", (req, res) => {
 
 function getJwt(user) {
   const payload = {
-    username: user.username,
-    role: user.role
+    username: user.username
   };
 
   const jwtOptions = {
